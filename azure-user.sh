@@ -11,10 +11,10 @@ createUser()
     newPass=Password1
     userSub=$2
 
-    # creates a new user if the user doesnt already exist 
+    # creates a new user if the user doesn't already exist 
     createdUsers=$(az ad user list --query [].userPrincipalName | grep -E /$principal/)
 
-    if [ -n $createdUsers ]; then
+    if ! [ -z $createdUsers ]; then
         az ad user create \
         --display-name $newUser \
         --user-principal-name $principal \
@@ -24,7 +24,7 @@ createUser()
 
         echo "created user"
     else 
-        echo "user already exist"
+        echo "user not created"
         exit 1
     fi
 }
@@ -38,12 +38,12 @@ assignRole()
     createdUsers=$(az ad user list --query [].userPrincipalName | grep -E /$principal/)
 
     if [ $action != "create" ] && [ $action != "delete" ]; then 
-        echo "not a valid action"
+        echo "choose a valid action create or delete"
         exit 1
     fi
 
-    if [ -n $result ]; then
-        echo "this user does not exist try different user"
+    if ! [ -z $createdUsers ]; then
+        echo "user does not exist"
         exit 1
     fi
 
@@ -65,7 +65,7 @@ deleteUser()
     --query "[?id=='NA(classic admins)'].principalName" | grep -E $principal)
 
     if ! [ -z $admin ]; then
-        echo "cannot delete user that is an admin"
+        echo "cannot delete admin"
         exit 1
     fi
 
