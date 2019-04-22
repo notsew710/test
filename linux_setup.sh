@@ -1,11 +1,14 @@
 #!/bin/bash
 
-## update bash
-sudo apt update
-sudo apt -y upgrade 
+## automate setup
 
+if [ -z $(uname -v) | grep /\#\d*-(/w)/] 
+
+##ubuntu
+apt update
+apt upgrade -y
 ## brew
-        sudo apt-get install build-essential curl file git
+        apt install build-essential curl file git
 
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 

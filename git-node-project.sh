@@ -1,6 +1,6 @@
 #!/bin/bash
 
-if [-e /user/bin/brew ]; then
+if [ -f /usr/bin/brew ] && [ -f /usr/bin/git ] && [ -f /home/linuxbrew/.linuxbrew/bin/node ] && [ -f /home/linuxbrew/.linuxbrew/bin/az ]; then
     git init
     npm init -y
 	mkdir git-project 

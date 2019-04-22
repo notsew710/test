@@ -7,19 +7,19 @@ createUser()
 {
     newUser=$1
     DOMAIN=joshweston33gmail.onmicrosoft.com
-    principal=$userdisplayname@$DOMAIN
+    principal=$newUser@$DOMAIN
     newPass=Password1
     userSub=$2
 
     # creates a new user if the user doesn't already exist 
     createdUsers=$(az ad user list --query [].userPrincipalName | grep -E /$principal/)
 
-    if ! [ -e $createdUsers ]; then
+    if [ -z $createdUsers ]; then
         az ad user create \
         --display-name $newUser \
         --user-principal-name $principal \
+	--password $newPass \
         --force-change-password-next-login \
-        --password $newPass \
         --subscription $userSub
 
         echo "created user"
@@ -48,11 +48,11 @@ assignRole()
     fi
 
     if [ $role != "reader" ] && [ $role != "contributor" ]; then 
-        echo "this is not a valid role to assign"
+        echo "Assign reader or contributor"
     fi
 
     az role assignment $action --assignee $principal --role $role
-    echo "you have have successfully used assign"
+    echo "you have have successfully assigned a role"
 
 }
 
