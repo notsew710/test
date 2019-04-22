@@ -14,7 +14,7 @@ createUser()
     # creates a new user if the user doesn't already exist 
     createdUsers=$(az ad user list --query [].userPrincipalName | grep -E /$principal/)
 
-    if ! [ -z $createdUsers ]; then
+    if ! [ -e $createdUsers ]; then
         az ad user create \
         --display-name $newUser \
         --user-principal-name $principal \
