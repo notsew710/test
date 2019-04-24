@@ -2,24 +2,26 @@
 
 ## automate setup
 
-if [ -z $(uname -v) | grep /\#\d*-(/w)/] 
-
-##ubuntu
 apt update
-apt upgrade -y
-## brew
-        apt install build-essential curl file git
+apt upgrade -qy
+apt install -qy build-essential curl file git
 
+echo "Ubuntu Setup Complete"
+
+## install brew
         sh -c "$(curl -fsSL https://raw.githubusercontent.com/Linuxbrew/install/master/install.sh)"
 
-## brew azure-cli
+echo "Brew setup Complete"
+
+## install azure-cli
         brew install azure-cli
-## brew git
-        brew install git
-## brew node
-        brew install node
-## brew gcc
+## install gcc
 	brew install gcc
+## install git
+        brew install git
+## install node
+        brew install node
+
 
 echo "New environment is now setup" 
 

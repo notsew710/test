@@ -1,9 +1,26 @@
 #!/bin/bash
 
-if [ -f /usr/bin/brew ] && [ -f /usr/bin/git ] && [ -f /home/linuxbrew/.linuxbrew/bin/node ] && [ -f /home/linuxbrew/.linuxbrew/bin/az ]; then
-    git init
-    npm init -y
-	mkdir git-project 
+if ! [ -f /usr/bin/brew ] \
+	&& [ -f /usr/bin/git ] \
+	&& [ -f /home/linuxbrew/.linuxbrew/bin/node ]
+	exit 1
+		echo "Run Setup"
+fi
+	directory=$1
+
+	if ! [ -d "$directory" ]; then 
+		mkdir $directory
+fi
+	if [ -n "(ls -A $directory)" ]; then 
+		echo "directory is not empty"
+		exit 1
+fi
+cd revature_p0
+    git config --global user.name "Josh W"		##configure git username 
+    git config --global user.email notsew710@gmail.com  ##configure git email 
+    git init		##initialize git repository
+    npm init -y		##initialize node package manager to manage node dependacies 
+    mkdir git-project 
 	cd git-project
     mkdir docker
 	cd docker
@@ -11,7 +28,6 @@ if [ -f /usr/bin/brew ] && [ -f /usr/bin/git ] && [ -f /home/linuxbrew/.linuxbre
     dockerfile \
     dockerup.yaml
 
-    ## github
 	cd ..
 	mkdir github
 	cd github
@@ -54,8 +70,5 @@ if [ -f /usr/bin/brew ] && [ -f /usr/bin/git ] && [ -f /home/linuxbrew/.linuxbre
     CHANGELOG.md \
     LICENSE.txt \
     README.md
-else 
-    echo  "run setup"
-fi
 
-exit 0
+echo "git file stuc complete"
