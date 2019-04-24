@@ -1,6 +1,9 @@
 #!/bin/bash
 
-## automate setup
+## requirement 1-
+##automate the process of provisioning a new linux virtual machine
+##include: up-to-date linux environment, brew, azure-cli, git, node.js
+
 
 apt update
 apt upgrade -qy

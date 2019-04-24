@@ -1,25 +1,34 @@
 #!/bin/bash
 
+## automate the process of setting up a new git project repository structure
+##include: verify req-1 is valid, create web node-based project
+
+## make sure brew, git and node are installed 
 if ! [ -f /usr/bin/brew ] \
 	&& [ -f /usr/bin/git ] \
 	&& [ -f /home/linuxbrew/.linuxbrew/bin/node ]
 	exit 1
 		echo "Run Setup"
 fi
+## make sure that the directory exsists 
 	directory=$1
 
 	if ! [ -d "$directory" ]; then 
 		mkdir $directory
 fi
-	if [ -n "(ls -A $directory)" ]; then 
+## make sure directiory is empty
+	if [ -n (ls -A $directory) ]; then 
 		echo "directory is not empty"
 		exit 1
 fi
+cd ~
 cd revature_p0
     git config --global user.name "Josh W"		##configure git username 
     git config --global user.email notsew710@gmail.com  ##configure git email 
     git init		##initialize git repository
     npm init -y		##initialize node package manager to manage node dependacies 
+
+## start creating git file struc
     mkdir git-project 
 	cd git-project
     mkdir docker

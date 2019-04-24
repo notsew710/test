@@ -1,5 +1,9 @@
 #!/bin/bash
 
+## automate the process of creating, assigning, deleting a directory user
+## include: azure, must be admin, add role of reader or contributor to subscription, 
+## remove role of reader or contributor to subscription, delete non-admin only, 1 script with 3 functions
+
 ## checks to see if azure has been installed
 if ! [ -e /home/linuxbrew/.linuxbrew/bin/az ]; then 
 	exit 1
