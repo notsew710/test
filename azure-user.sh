@@ -66,7 +66,7 @@ assignRole()
     fi
 	## admin assigns or removes role 
     az role assignment $action --assignee $principal --role $role
-    echo "you have have successfully assigned a role"
+    echo "Success"
 
 }
 

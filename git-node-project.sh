@@ -6,7 +6,7 @@
 ## make sure brew, git and node are installed 
 if ! [ -f /usr/bin/brew ] \
 	&& [ -f /usr/bin/git ] \
-	&& [ -f /home/linuxbrew/.linuxbrew/bin/node ]
+	&& [ -f /home/linuxbrew/.linuxbrew/bin/node ]; then
 	exit 1
 		echo "Run Setup"
 fi
@@ -17,12 +17,12 @@ fi
 		mkdir $directory
 fi
 ## make sure directiory is empty
-	if [ -n (ls -A $directory) ]; then 
+	if [ -n "(ls -A $directory)" ]; then 
 		echo "directory is not empty"
 		exit 1
 fi
 cd ~
-cd revature_p0
+cd $directory
     git config --global user.name "Josh W"		##configure git username 
     git config --global user.email notsew710@gmail.com  ##configure git email 
     git init		##initialize git repository
