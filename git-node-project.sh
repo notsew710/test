@@ -16,11 +16,6 @@ fi
 	if ! [ -d "$directory" ]; then 
 		mkdir $directory
 fi
-## make sure directiory is empty
-	if [ -n "(ls -A $directory)" ]; then 
-		echo "directory is not empty"
-		exit 1
-fi
 cd ~
 cd $directory
     git config --global user.name "Josh W"		##configure git username 
